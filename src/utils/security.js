@@ -1,11 +1,11 @@
 import Oidc from "oidc-client";
 var config = {
-    authority: process.env.VUE_APP_SIS_AUTHORITY_URL, //VUE_APP_SIS_AUTHORITY_URL: https://192.168.1.245:44310/
+    authority: process.env.VUE_APP_SIS_AUTHORITY_URL, 
     client_id: "mfeClient",
-    redirect_uri: window.location.origin + "/callback", // http://192.168.1.245:8000/callback
+    redirect_uri: window.location.origin + "/callback", 
     response_type: "id_token token",
     scope: "openid profile mfe_api email",
-    post_logout_redirect_uri: window.location.origin + "/index", // http://192.168.1.245:8000/index
+    post_logout_redirect_uri: window.location.origin + "/index", 
     userStore: new Oidc.WebStorageStateStore({ store: window.sessionStorage })
 };
 const mgr = new Oidc.UserManager(config);

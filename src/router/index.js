@@ -1,3 +1,42 @@
+import { createRouter, createWebHistory } from 'vue-router'
+
+import RepairHandle from '@/views/RepairHandle.vue'
+import ApproveHandle from '@/views/ApproveHandle.vue'
+import HomePage from '@/views/HomePage.vue'
+
+
+const routes = [
+    {
+        path: '/',
+        name: 'homePage',
+        component: HomePage,
+        meta: {
+            requireAuth: true
+        },
+    },
+    {
+        name: "repairHandle",
+        path: "/repairhandle",
+        meta: {
+            title: "返修处理"
+        },
+        component: RepairHandle
+    },
+    {
+        name: "approveHandle",
+        path: "/approveHandle",
+        meta: {
+            title: "返修确认"
+        },
+        component: ApproveHandle
+    },
+]
+
+const router = createRouter({
+    history: createWebHistory(process.env.BASE_URL),
+    routes
+})
+
 // 路由守卫
 // router.beforeEach((to, from, next) => {
 //     if (to.meta.requireAuth) {
@@ -17,35 +56,5 @@
 //         next()
 //     }
 // })
-
-import { createRouter, createWebHistory  } from 'vue-router'
-
-import RepairHandle from '@/views/RepairHandle.vue'
-import Approve from '@/views/RepairApprove.vue'
-
-
-const routes = [
-    {
-        name: "repairhandle",
-        path: "/repairhandle",
-        meta: {
-            title: "返修处理"
-        },
-        component: RepairHandle
-    },
-    {
-        name: "approve",
-        path: "/approve",
-        meta: {
-            title: "返修确认"
-        },
-        component: Approve
-    },
-]
-
-const router = createRouter({
-    history: createWebHistory(),
-    routes
-})
 
 export default router;
